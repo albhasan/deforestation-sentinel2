@@ -1,5 +1,4 @@
-![doi](https://zenodo.org/badge/doi/10.5281/zenodo.3932013.svg)
-
+[![DOI](https://zenodo.org/badge/277586366.svg)](https://zenodo.org/badge/latestdoi/277586366)
 
 # deforestation-sentinel2
 
