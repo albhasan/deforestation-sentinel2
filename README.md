@@ -1,3 +1,6 @@
+![doi](https://zenodo.org/badge/doi/10.5281/zenodo.3932013.svg)
+
+
 # deforestation-sentinel2
 
 Scripts for creating the classification maps described in the paper entitled "Detecting Tropical Deforestation using Time Series of Sentinel-2A Images" authored by Alber Sanchez, Michelle C. A. Picoli, Rolf Simoes, Gilberto Camara, Pedro Andrade, and Karine Reis.
