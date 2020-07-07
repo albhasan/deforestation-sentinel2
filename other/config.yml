@@ -1,0 +1,340 @@
+default:
+
+    # estimated relative growth size of R memory relative to block size
+    R_memory_bloat           : 2.5
+    R_processing_bloat       : 5
+
+    # minimum number of samples for multicore processing
+    minimum_number_samples   : 1000
+
+    # Data services known to sits
+    services                : ["WTSS", "SATVEG", "EOCUBES", "BRICK", "STACK", "LAYER"]
+
+    # Names of the providers of services
+    WTSS_providers          : ["WTSS-INPE"]
+    SATVEG_providers        : ["SATVEG-EMBRAPA"]
+    BRICK_providers         : ["BRICK"]
+    AWS_providers           : ["AWS"]
+    RASTER_providers        : ["RASTER"]
+    STACK_providers         : ["STACK"]
+    LAYER_providers         : ["LAYER"]
+    EOCUBES_providers       : ["EOCUBES-INPE"]
+
+    # URL to access each WTSS service
+    WTSS-INPE_server        : "http://www.esensing.dpi.inpe.br/wtss/"
+
+    # URL to access each EOCUBES service
+    EOCUBES-INPE_server     : "eocubes"
+
+    # URL to access LOCALHOST
+    BRICK_server            : "http://127.0.0.1"
+    STACK_server            : "http://127.0.0.1"
+
+    # URL to access AWS
+    AWS_server              : "s3-sa-east-1.amazonaws.com"
+
+    # URL to access SATVEG
+    SATVEG-EMBRAPA_server   : "https://www.satveg.cnptia.embrapa.br/satvegws/ws/perfil/ZW46IXzr4pRzJlX/"
+    SATVEG_EMBRAPA_test     : "https://www.satveg.cnptia.embrapa.br/satvegws/ws/perfil/ZW46IXzr4pRzJlX/ndvi/ponto/-55.50563/-11.71557/terra/1//"
+    SATVEG-EMBRAPA_cubes    : ["terra", "aqua", "comb"]
+
+
+    supported_satellites    : ["TERRA", "AQUA", "MODIS", "LANDSAT8", "LANDSAT", "SENTINEL2"]
+    supported_sensors       : ["MODIS", "OLI", "MSI"]
+
+    MODIS_sensors           : ["MODIS"]
+    TERRA_sensors           : ["MODIS"]
+    LANDSAT8_sensors        : ["OLI"]
+    LANDSAT_sensors         : ["OLI"]
+    SENTINEL2_sensors       : ["MSI"]
+
+    MODIS_products          : ["MOD13Q1"]
+    MOD13Q1_satellite       : ["TERRA"]
+    MOD13Q1_sensor          : ["MODIS"]
+
+    MODIS                   :
+        missing_value       :
+            ndvi            : -3000
+            evi             : -3000
+            red             : -1000
+            nir             : -1000
+            blue            : -1000
+            mir             : -1000
+
+        minimum_value       :
+            ndvi            : -3000
+            evi             : -3000
+            red             : 0
+            blue            : 0
+            nir             : 0
+            mir             : 0
+
+        maximum_value       :
+            ndvi            : 10000
+            evi             : 10000
+            red             : 10000
+            blue            : 10000
+            nir             : 10000
+            mir             : 10000
+
+        scale_factor        :
+            ndvi            : 0.0001
+            evi             : 0.0001
+            red             : 0.0001
+            nir             : 0.0001
+            blue            : 0.0001
+            mir             : 0.0001
+
+        resolution          :
+            xres            : 0.00208334
+            yres            : 0.00208334
+
+    OLI                     :
+        missing_value       :
+            ndvi            : -9999
+            evi             : -9999
+            blue            : -9999
+            red             : -9999
+            nir             : -9999
+            swir1           : -9999
+            swir2           : -9999
+
+        minimum_value       :
+            ndvi            : -3000
+            evi             : -3000
+            red             : 0
+            blue            : 0
+            nir             : 0
+            swir1           : 0
+            swir2           : 0
+
+        maximum_value       :
+            ndvi            : 10000
+            evi             : 10000
+            red             : 10000
+            blue            : 10000
+            nir             : 10000
+            swir1           : 10000
+            swir2           : 10000
+
+        scale_factor:
+            ndvi            : 0.0001
+            evi             : 0.0001
+            red             : 0.0001
+            blue            : 0.0001
+            nir             : 0.0001
+            swir1           : 0.0001
+            swir2           : 0.0001
+
+        resolution          :
+            xres            : 30
+            yres            : 30
+
+    MSI:
+        missing_value       :
+            blue            : -9999           
+            green           : -9999
+            red             : -9999
+            bnir            : -9999
+            evi             : -9999
+            evi2            : -9999
+            gemi            : -9999
+            mtvi            : -9999
+            ndmi            : -9999
+            ndvi            : -9999
+            ndwi            : -9999
+            nnir            : -9999
+            osavi           : -9999
+            rdvi            : -9999
+            savi            : -9999
+            swir1           : -9999
+            swir2           : -9999
+            pc1rgbnir       : -9999
+            pc2rgbnir       : -9999
+
+        minimum_value       :
+            blue            : 0
+            green           : 0
+            red             : 0
+            bnir            : 0
+            evi             : -9999
+            evi2            : -9999
+            gemi            : 0
+            mtvi            : 0
+            ndmi            : -9999
+            ndvi            : -9999
+            ndwi            : 0
+            nnir            : 0
+            osavi           : -9999 
+            rdvi            : 0
+            savi            : -9999 
+            swir1            : 0
+            swir2            : 0
+            pc1rgbnir       : -9999
+            pc2rgbnir       : -9999
+
+        maximum_value       :
+            blue            : 10000
+            green           : 10000
+            red             : 10000
+            bnir            : 10000
+            evi             : 10000
+            evi2            : 10000
+            gemi            : 10000
+            mtvi            : 10000
+            ndmi            : 10000
+            ndvi            : 10000
+            ndwi            : 10000
+            nnir            : 10000
+            osavi           : 10000
+            rdvi            : 10000
+            savi            : 10000
+            swir1           : 10000
+            swir2           : 10000
+            pc1rgbnir       : 10000
+            pc2rgbnir       : 10000
+
+        scale_factor:
+            blue            : 0.0001
+            green           : 0.0001
+            red             : 0.0001
+            bnir            : 0.0001
+            evi             : 0.0001
+            evi2            : 0.0001
+            gemi            : 0.0001
+            mtvi            : 0.0001
+            ndmi            : 0.0001
+            ndvi            : 0.0001
+            ndwi            : 0.0001
+            nnir            : 0.0001
+            osavi           : 0.0001
+            rdvi            : 0.0001
+            savi            : 0.0001
+            swir1           : 0.0001
+            swir2           : 0.0001
+            pc1rgbnir       : 0.0001
+            pc2rgbnir       : 0.0001
+
+        resolution          :
+            xres            : 10
+            yres            : 10
+
+
+    tasseled_cap_coef       :
+        MODIS               :
+            brightness      :
+                 red        : 0.4395
+                 nir        : 0.5495
+                 blue       : 0.2460
+                 green      : 0.3918
+                 nir2       : 0.3506
+                 mir1       : 0.3506
+                 mir        : 0.2678
+            greenness       :
+                 red        : -0.4064
+                 nir        :  0.5129
+                 blue       : -0.2744
+                 green      : -0.2893
+                 nir2       :  0.4882
+                 mir1       : -0.036
+                 mir        : -0.4169
+
+            wetness         :
+                 red        : -0.4064
+                 nir        :  0.5129
+                 blue       : -0.2744
+                 green      : -0.2893
+                 nir2       :  0.4882
+                 mir1       : -0.036
+                 mir        : -0.4169
+
+        OLI                 :
+            brightness      :
+                 blue       : 0.3029
+                 green      : 0.2786
+                 red        : 0.4733
+                 nir        : 0.5599
+                 swir1      : 0.508
+                 swir2      : 0.1872
+
+            greenness       :
+                 blue       : -0.2941
+                 green      : -0.243
+                 red        : -0.5424
+                 nir        :  0.7276
+                 swir1      :  0.0713
+                 swir2      : -0.1608
+
+            wetness         :
+                 blue       :  0.1511
+                 green      :  0.1973
+                 red        :  0.3283
+                 nir        :  0.3407
+                 swir1      : -0.7117
+                 swir2      : -0.4559
+
+    SATVEG_bands            :
+        terra               : &bands-sv ["ndvi", "evi"]
+        aqua                : *bands-sv
+        comb                : *bands-sv
+    SATVEG_bbox             :
+        terra               :
+            xmin            : &xmin_satveg -81.2341
+            xmax            : &xmax_satveg -31.9165
+            ymin            : &ymin_satveg -30.0000
+            ymax            : &ymax_satveg  10.000
+        aqua                :
+            xmin            : *xmin_satveg
+            xmax            : *xmax_satveg
+            ymin            : *ymin_satveg
+            ymax            : *ymax_satveg
+        comb                :
+            xmin            : *xmin_satveg
+            xmax            : *xmax_satveg
+            ymin            : *ymin_satveg
+            ymax            : *ymax_satveg
+    SATVEG_size             :
+        terra               :
+            nrows           : &nrows_satveg 24000
+            ncols           : &ncols_satveg 19200
+        aqua                :
+            nrows           : *nrows_satveg
+            ncols           : *ncols_satveg
+        comb                :
+            nrows           : *nrows_satveg
+            ncols           : *ncols_satveg
+    SATVEG_prefilter        :
+        terra               : &prefilter ["0", "1", "2", "3"] # "0" - none, "1" - no data correction, "2" - cloud correction, "3" - no data and cloud correction
+        aqua                : *prefilter
+        comb                : *prefilter
+    SATVEG_crs              :
+        terra               : &crs-wgs84 "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+        aqua                : *crs-wgs84
+        comb                : *crs-wgs84
+
+    colors:
+        Araguaia :          "#78c679"
+        Beans :             "#8c96c6"
+        Campo_Cerrado :     "#addd8e"
+        Cerradao     :      "#238443"
+        Cerrado :           "#41ab5d"
+        Cerrado_Rupestre :  "#d9f0a3"
+        Corn :              "#fcbba1"
+        Cotton:             "#fb6a4a"
+        Dunas :             "#fff7e6"
+        Fallow_Cotton :     "#fb6a4a"
+        Millet_Cotton :     "#fb6a4a"
+        Forest :            "#006837"
+        Pasture :           "#c6dbef"
+        Soy_Corn :          "#993404"
+        Soy_Cotton :        "#662506"
+        Soy_Fallow :        "#fec44f"
+        Soy_Sorghum:        "#ec7014"
+        Soy_Millet :        "#ec7014"
+        Soy_Sunflower :     "#fe9929"
+        Sugarcane :         "#8c6bb1"
+        Urban_Area :        "#969696"
+        Water      :        "#00008b"
+
+
+# new config file inclugind Sentineli-2 10 mts 2020/04/17
