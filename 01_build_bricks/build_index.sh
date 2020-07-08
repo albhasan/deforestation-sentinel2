@@ -5,7 +5,7 @@
 shopt -s nullglob
 
 # TODO: Transform to input variable.
-out_dir=/disks/d3/brick_sentinel2
+out_dir="./brick_sentinel2"
 index="$1"
 
 mkdir -p "${out_dir}"/tif 2> /dev/null

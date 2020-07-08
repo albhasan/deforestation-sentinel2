@@ -5,18 +5,20 @@ suppressMessages(library(raster))
 
 set.seed(666)
 
-source("/home/alber/Documents/ghProjects/sits.starfm/inst/examples/compare_sentinel_modis/util.R")
+source("./other/util.R")
 
-result_dir <- "/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/results9"
+# TODO: Transform into script parameter.
+result_dir <- "./results9"
 
-my_recode <- c(Deforestatio = "Deforestation", Forest = "Forest", "NonForest" = "Non-Forest")
+my_recode <- c(Deforestatio = "Deforestation", Forest = "Forest",
+               "NonForest" = "Non-Forest")
 my_recode2 <- my_recode %>%
     magrittr::set_names(as.character(1:length(.)))
 
 # Get the validation points
 samples_tb <- tibble::tribble(~used_bands, ~extra_samples_file,
-                "blue-bnir-green-nnir-red-swir1-swir2", "/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/data/validation/validation_bands.rds",
-                "evi-ndmi-ndvi",                        "/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/data/validation/validation_indices.rds") %>%
+                "blue-bnir-green-nnir-red-swir1-swir2", "./data/validation/validation_bands.rds",
+                "evi-ndmi-ndvi",                        "./data/validation/validation_indices.rds") %>%
     dplyr::mutate(samples = purrr::map(extra_samples_file, readRDS))
 
 samples_tb$samples <- lapply(samples_tb$samples, function(x){
@@ -29,12 +31,11 @@ samples_tb$samples <- lapply(samples_tb$samples, function(x){
 samples_tb$samples[[1]] %>%
     dplyr::mutate(id = dplyr::row_number()) %>%
     dplyr::select(id, longitude, latitude, start_date, end_date, label) %>%
-    readr::write_csv("/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/pangea/validation_dataset_bands.csv")
+    readr::write_csv("./pangea/validation_dataset_bands.csv")
 samples_tb$samples[[2]] %>%
     dplyr::mutate(id = dplyr::row_number()) %>%
     dplyr::select(id, longitude, latitude, start_date, end_date, label) %>%
-    readr::write_csv("/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/pangea/validation_dataset_indices.csv")
-
+    readr::write_csv("./pangea/validation_dataset_indices.csv")
 
 results_tb <- result_dir %>%
     get_results() %>%

@@ -9,13 +9,13 @@ if (length(args) != 3) {
            call. = FALSE)
 }
 
-source("/home/alber/Documents/ghProjects/sits.starfm/inst/examples/compare_sentinel_modis/util.R")
+source("./other/util.R")
 
 sample_csv <- args[[1]]
 b_type     <- args[[2]]
 out_file   <- args[[3]]
 
-brick_path <- "/home/alber/Documents/data/experiments/prodes_reproduction/data/raster/brick_sentinel2_raw"
+brick_path <- "./brick_sentinel2"
 
 brick_tb <- brick_path %>%
     get_brick_md() %>%

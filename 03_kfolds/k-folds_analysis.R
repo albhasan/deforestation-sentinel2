@@ -3,7 +3,7 @@ suppressMessages(library(dplyr))
 suppressMessages(library(caret))
 suppressMessages(library(sits))
 
-#source("/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/scripts_bricks/util.R")
+source("./other/util.R")
 
 args = commandArgs(trailingOnly = TRUE)
 if (length(args) != 2) {
@@ -12,11 +12,6 @@ if (length(args) != 2) {
 
 rds_file     <- args[[1]]
 out_base_dir <- args[[2]]
-
-#rds_file <-     "/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/data/validation/samples_B_approx_3l.rds"
-#out_base_dir <- "/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/plot/kfold_approx"
-#rds_file <-     "/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/data/validation/samples_B_raw_3l.rds"
-#out_base_dir <- "/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/plot/kfold_raw"
 
 out_dir <- out_base_dir %>%
     file.path(tools::file_path_sans_ext(basename(rds_file)))
@@ -31,7 +26,7 @@ samples_tb <- rds_file %>%
 samples_tb %>%
     dplyr::mutate(id = dplyr::row_number()) %>%
     dplyr::select(id, longitude, latitude, start_date, end_date, label) %>%
-    readr::write_csv("/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/pangea/training_dataset.csv")
+    readr::write_csv("./pangea/training_dataset.csv")
 
 experiments <- list(all_bands = c("blue","bnir","green","nnir","red","swir1","swir2"),
                     indeces   = c("evi","ndmi","ndvi"))

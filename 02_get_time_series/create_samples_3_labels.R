@@ -5,7 +5,7 @@
 suppressMessages(library(dplyr))
 
 # TODO: Transform into a script's parameter.
-base_dir <- "/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/data/validation"
+base_dir <- "./data/validation"
 
 # Read samples
 recode_to_3_labels <- function(rds_file){

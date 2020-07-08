@@ -36,7 +36,7 @@ stopifnot(file.exists(samples_file))
 
 #---- Setup ----
 
-tmp_directory <- "/disks/d3/tmp"
+tmp_directory <- "./tmp"
 dir.create(file.path(tmp_directory, "masked"))
 raster::rasterOptions(tmpdir = tmp_directory)
 raster::tmpDir()
@@ -47,7 +47,7 @@ out_file_template <- samples_file %>%
 
 #---- Util ----
 
-#source("/home/alber/Documents/ghProjects/sits.starfm/inst/examples/compare_sentinel_modis/util.R")
+source("./other/util.R")
 
 # Helper for doing the classification.
 classify <- function(used_bands, used_labels, brick_dir, samples_file,
