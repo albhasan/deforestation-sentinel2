@@ -37,6 +37,9 @@ git clone https://github.com/albhasan/deforestation-sentinel2
 │   ├── tif
 │   └── vrt
 ├── data
+│   ├── raster
+│   │   ├── sentinel_L1C
+│   │   └── sentinel_L2A
 │   └── validation
 │       ├── samples_A_approx.rds           Intermediary file.
 │       ├── samples_all_bands.csv          Sample points (WGS84).

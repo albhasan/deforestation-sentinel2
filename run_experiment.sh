@@ -3,12 +3,12 @@
 # Path to base directory with scripts.
 script_dir="/home/alber/Documents/ghProjects/deforestation-sentinel2"
 
-# Path to Sentinel images
-sentinel_L1C="/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/data/raster/sentinel_L1C"
-sentinel_L2A="/home/alber/Documents/data/experiments/prodes_reproduction/papers/deforestation/data/raster/sentinel_L2A"
-
 # Path to brick files.
-brick_dir="/disks/d3/brick_sentinel2"
+brick_dir="./brick_sentinel2"
+
+# Path to Sentinel images
+sentinel_L1C="./data/raster/sentinel_L1C"
+sentinel_L2A="./data/raster/sentinel_L2A"
 
 #---- Build bricks ----
 
@@ -54,6 +54,8 @@ Rscript "${script_dir}"/01_build_bricks/interp_sentinel-2.R approx "${brick_dir}
 
 #---- Get time series ----
 
+# NOTE: approx refers to bricks on which the clouds have been replace by interpolation (R's approx function).
+# NOTE: raw refers to bricks made of images as they are.
 "${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_all_bands.csv approx "${script_dir}"/data/validation/samples_A_approx.rds
 "${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_indices.csv   approx "${script_dir}"/data/validation/samples_B_approx.rds
 "${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_all_bands.csv raw    "${script_dir}"/data/validation/samples_A_raw.rds 
