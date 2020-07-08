@@ -14,6 +14,7 @@ git clone https://github.com/albhasan/deforestation-sentinel2
 
 ## Contents
 
+```bash
 .
 ├── 01_build_bricks
 │   ├── build_index.sh                     Compute vegetation indices. 
@@ -58,4 +59,4 @@ git clone https://github.com/albhasan/deforestation-sentinel2
 ├── results9
 ├── run_experiment.sh                      Main script for reproducibility.
 └── tmp
-
+```
