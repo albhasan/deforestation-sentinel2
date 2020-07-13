@@ -4,23 +4,23 @@ suppressMessages(library(sf))
 suppressMessages(library(sits))
 
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) != 3) {
-      stop("This script takes 3 parameters: An input file (CSV), a type of brick, and an output file (RDS).",
+if (length(args) != 4) {
+      stop("This script takes 4 parameters: An input file (CSV), a directory of bricks, a type of brick, and an output file (RDS).",
            call. = FALSE)
 }
 
+stopifnot(file.exists("./other/util.R"))
 source("./other/util.R")
 
 sample_csv <- args[[1]]
-b_type     <- args[[2]]
-out_file   <- args[[3]]
-
-brick_path <- "./brick_sentinel2"
+brick_path <- args[[2]]
+b_type     <- args[[3]]
+out_file   <- args[[4]]
 
 brick_tb <- brick_path %>%
     get_brick_md() %>%
     dplyr::filter(brick_type == b_type,
-                  resolution == "10m", file_ext == "vrt") %>%
+                  resolution == "10m", file_ext == "tif") %>%
     dplyr::arrange(tile, img_date, band) %>%
     ensurer::ensure_that(nrow(.) > 0, err_desc = "No files found!") %>%
     ensurer::ensure_that(length(unique(.$img_date)) == 1,
