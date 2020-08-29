@@ -50,18 +50,21 @@ Rscript "${script_dir}"/01_build_bricks/interp_sentinel-2.R approx "${brick_dir}
 
 #---- Install SITS ----
 
-"${script_dir}"/other/install_sits.R
+Rscript "${script_dir}"/other/install_sits.R
 
 #---- Get time series ----
 
 # NOTE: approx refers to bricks on which the clouds have been replace by interpolation (R's approx function).
 # NOTE: raw refers to bricks made of images as they are.
-"${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_all_bands.csv approx "${script_dir}"/data/validation/samples_A_approx.rds
-"${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_indices.csv   approx "${script_dir}"/data/validation/samples_B_approx.rds
-"${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_all_bands.csv raw    "${script_dir}"/data/validation/samples_A_raw.rds 
-"${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_indices.csv   raw    "${script_dir}"/data/validation/samples_B_raw.rds
+"${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_all_bands.csv "${brick_dir}" approx "${script_dir}"/data/validation/samples_A_approx.rds
+"${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_indices.csv   "${brick_dir}" approx "${script_dir}"/data/validation/samples_B_approx.rds
+"${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_all_bands.csv "${brick_dir}" raw    "${script_dir}"/data/validation/samples_A_raw.rds 
+"${script_dir}"/02_get_time_series/get_time_series.R "${script_dir}"/data/validation/samples_indices.csv   "${brick_dir}" raw    "${script_dir}"/data/validation/samples_B_raw.rds
 
-"${script_dir}"/02_get_time_series/create_samples_3_labels.R
+"${script_dir}"/02_get_time_series/create_samples_3_labels.R  "${script_dir}"/data/validation/samples_A_approx.rds
+"${script_dir}"/02_get_time_series/create_samples_3_labels.R  "${script_dir}"/data/validation/samples_B_approx.rds
+"${script_dir}"/02_get_time_series/create_samples_3_labels.R  "${script_dir}"/data/validation/samples_A_raw.rds 
+"${script_dir}"/02_get_time_series/create_samples_3_labels.R  "${script_dir}"/data/validation/samples_B_raw.rds
 
 #---- Compute K-Folds ----
 
